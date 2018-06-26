@@ -102,15 +102,10 @@ int main(void){
 	ini_avr();
 	ini_lcd();
     SET_BIT(DDRB, 3); // make B3 an output
-	// set all a ports to output   
-	SET_BIT(DDRC, 0);
-	SET_BIT(DDRC, 1);
-	SET_BIT(DDRC, 2);
-	SET_BIT(DDRC, 3);
-	SET_BIT(DDRC, 4);
-	SET_BIT(DDRC, 5); 
-	SET_BIT(DDRC, 6);
-	SET_BIT(DDRC, 7);
+	// set all C ports to output  
+	for(int i = 0; i<8; ++i){
+		SET_BIT(DDRC, i); 
+	} 
 	
 	ADCSRA |= 1<<ADPS2;
 	ADMUX |= (1<<REFS0) | (1<<REFS1);
